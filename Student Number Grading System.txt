@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+// Function to calculate the grade based on the score
+char calculateGrade(int score) {
+    if (score >= 90) {
+        return 'A';
+    } else if (score >= 80) {
+        return 'B';
+    } else if (score >= 70) {
+        return 'C';
+    } else if (score >= 60) {
+        return 'D';
+    } else {
+        return 'F';
+    }
+}
+
+int main() {
+    vector<string> studentNames;
+    vector<int> studentScores;
+
+    int numStudents;
+    cout << "Enter the number of students: ";
+    cin >> numStudents;
+
+    for (int i = 0; i < numStudents; i++) {
+        string name;
+        int score;
+
+        cout << "Enter the name of student " << i + 1 << ": ";
+        cin.ignore(); // Clear the input buffer
+        getline(cin, name);
+
+        cout << "Enter the score for " << name << ": ";
+        cin >> score;
+
+        studentNames.push_back(name);
+        studentScores.push_back(score);
+    }
+
+    cout << "\nStudent Grades:\n";
+    for (int i = 0; i < numStudents; i++) {
+        cout << studentNames[i] << ": " << studentScores[i] << " - Grade: " << calculateGrade(studentScores[i]) << endl;
+    }
+
+    return 0;
+}
